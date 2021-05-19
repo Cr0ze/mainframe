@@ -1,2 +1,2 @@
 # mainframe
-Just some code i've been working on and made. 
+Just some code I've been working on and made. 
