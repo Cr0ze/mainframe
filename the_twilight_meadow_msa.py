@@ -1,8 +1,8 @@
 '''
-File: w05_textadventure_msa.py
+File: the_twilight_meadow_msa.py
 Author: Max Appleton (msa)
 
-Purpose: A text based adventure game.
+Purpose: A text based adventure game. Working with loop and making a text based game. 
 '''
 #-----------------------------------------------------------------------------------
 loop = 1
