@@ -44,21 +44,24 @@ pixel_combined = image_combined.load()
 #determining the Green Screen background color.
 (r_grnscr, g_grnscr, b_grnscr) = pixel_grnscr[25, 25]
 
-#for the new image x
-for x in range (0 , 800):
-    #for the new image y
-    for y in range (0, 600):
-        #eval if green screen pixel for (x, y) is (0, 255, 0)
+for x in range (0, width_bckgrd):
+    for y in range (0, height_bckgrd):
         (r, g, b) = pixel_grnscr[x, y]
-        #if green screen pixel != (0, 255, 0)
-        if pixel_grnscr[x, y] != (r_grnscr, g_grnscr, b_grnscr):
-            #write green screen pixel @ (x, y) to new image
-            (r, g, b) = pixel_grnscr[x, y]
+            
+        if r < 155 and g > 200 and b < 155:
+            (r, g, b) = pixel_bckgrd[x, y] 
             pixel_combined[x, y] = (r, g, b)
-        #if green screen pixel == (0, 255, 0)
-        elif pixel_grnscr[x, y] == (r_grnscr, g_grnscr, b_grnscr):
-            #write backfround pixel @ (x, y) to new image
+            
+        elif r < 100 and g > 190 and b < 100:
             (r, g, b) = pixel_bckgrd[x, y]
+            pixel_combined[x, y] = (r, g, b)
+            
+        elif pixel_grnscr[x, y] == (r_grnscr, g_grnscr, b_grnscr):
+            (r, g, b) = pixel_bckgrd[x, y]
+            pixel_combined[x, y] = (r, g, b)
+            
+        elif pixel_grnscr[x, y] != (r_grnscr, g_grnscr, b_grnscr):
+            (r, g, b) = pixel_grnscr[x, y]
             pixel_combined[x, y] = (r, g, b)
 #-------------------------------------------------------------------------------
 #Apply filters
